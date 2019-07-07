@@ -51,7 +51,7 @@ class Mobtexting extends WP_SMS {
 
 		// comma seperated receivers
 		$to            = implode( ',', $this->to );
-		$msg           = urlencode( $this->msg );
+		$msg           = $this->msg;
 		$api_end_point = $this->wsdl_link . "/sms/send";
 		$api_args      = Array(
 			'access_token'   => $this->has_key,
@@ -71,23 +71,19 @@ class Mobtexting extends WP_SMS {
 		$response_code = wp_remote_retrieve_response_code( $response );
 		$result        = json_decode( $response['body'] );
 
- 		if ( $response_code == '201' ) {
-			if ( $result->status == 'success' ) {
-				$this->InsertToDB( $this->from, $this->msg, $this->to );
+ 		if ( $response_code == '200' ) {
+			$this->InsertToDB( $this->from, $this->msg, $this->to );
 
-				/**
-				 * Run hook after send sms.
-				 *
-				 * @since 2.4
-				 *
-				 * @param string $result result output.
-				 */
-				do_action( 'wp_sms_send', $result );
+			/**
+			 * Run hook after send sms.
+			 *
+			 * @since 2.4
+			 *
+			 * @param string $result result output.
+			 */
+			do_action( 'wp_sms_send', $result );
 
-				return $result;
-			} else {
-				return $result->message;
-			}
+			return $result;
 
 		} else {
 			return new WP_Error( 'send-sms', $result->message );
