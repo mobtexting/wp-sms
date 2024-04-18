@@ -56,7 +56,7 @@
                         <option value="wp_tellephone" id="wp_tellephone"><?php _e( 'Number(s)', 'wp-sms' ); ?></option>
                     </select>
 
-                    <?php if(!empty($wpsms_option['add_mobile_field']) or $wpsms_option['add_mobile_field'] ==1) { ?>
+                    <?php if( (isset($wpsms_option['add_mobile_field'])) and (!empty($wpsms_option['add_mobile_field']) or $wpsms_option['add_mobile_field'] ==1) ) { ?>
                     <select name="wpsms_group_role" class="wpsms-value wprole-group">
                         <?php
                         foreach ( $wpsms_list_of_role as $key_item => $val_item ):
