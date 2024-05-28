@@ -27,3 +27,21 @@ Temporary Items
 
 #Netbeans project
 nbproject
+
+#Phpstorm project
+.idea
+
+# node_modules
+/node_modules
+
+# Build Folder
+/build
+
+#vscode
+.vscode
+
+#vendor
+/vendor
+
+# Testing
+.env.testing
