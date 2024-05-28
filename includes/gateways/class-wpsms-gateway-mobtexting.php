@@ -118,7 +118,7 @@ class Mobtexting extends \WP_SMS\Gateway
         if (!$this->has_key) {
             return new \WP_Error('account-credit', esc_html__('API username or API password is not entered.', 'wp-sms'));
         }
-        $api_end_point = $this->wsdl_link . "/account/balance";
+        $api_end_point = $this->wsdl_link . "/finance/balance";
         $api_args      = array(
             'timeout' => 18000
         );
