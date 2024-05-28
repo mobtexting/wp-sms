@@ -1509,9 +1509,6 @@ class Gateway
 	 */
 	public static function gatewayregions() {
 		$gatewayregions = array(
-            ''                     => array(
-                'default' => esc_html__('Please select your gateway region', 'wp-sms'),
-            ),
 			'Region'               => array(
                 'https://portal.mobtexting.com/' => 'india',
                 'https://ap.cpaas.bics.com/' => 'singapore',
